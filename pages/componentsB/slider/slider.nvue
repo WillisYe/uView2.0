@@ -1,41 +1,17 @@
 <template>
 	<view class="u-page">
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">基本案例</text>
-			<view class="u-page__slide-item">
-				<u-slider
-					v-model="value1"
-				></u-slider>
-			</view>
-		</view>
-			<view class="u-demo-block">
-			<text class="u-demo-block__title">自定义范围(0—50)</text>
-			<view class="u-page__slide-item">
-				<u-slider
-				    v-model="value2"
-					showValue
-				    min="0"
-				    max="50"
-				></u-slider>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">指定步长(每次步进5)</text>
-			<view class="u-page__slide-item">
-				<u-slider
-				    v-model="value4"
-				    :step="5"
-				></u-slider>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">自定义样式</text>
-			<view class="u-page__slide-item">
-				<u-slider
-				    v-model="value5"
-				    activeColor="#deab8a"
-				    blockColor="#f47920"
-				></u-slider>
+		<view
+			v-for="section in sliderSections"
+			:key="section.title"
+			class="u-demo-block"
+		>
+			<text class="u-demo-block__title">{{ section.title }}</text>
+			<view
+				v-for="(item, index) in section.items"
+				:key="section.title + index"
+				class="u-page__slide-item"
+			>
+				<u-slider v-model="item.value" v-bind="item.props"></u-slider>
 			</view>
 		</view>
 	</view>
@@ -45,11 +21,32 @@
 	export default {
 		data() {
 			return {
-				value1: 30,
-				value2: 30,
-				value3: 30,
-				value4: 30,
-				value5: 30
+				sliderSections: [
+					{
+						title: '基本案例',
+						items: [
+							{ value: 30, props: {} }
+						]
+					},
+					{
+						title: '自定义范围(0—50)',
+						items: [
+							{ value: 30, props: { showValue: true, min: '0', max: '50' } }
+						]
+					},
+					{
+						title: '指定步长(每次步进5)',
+						items: [
+							{ value: 30, props: { step: 5 } }
+						]
+					},
+					{
+						title: '自定义样式',
+						items: [
+							{ value: 30, props: { activeColor: '#deab8a', blockColor: '#f47920' } }
+						]
+					}
+				]
 			}
 		},
 		watch: {
@@ -76,6 +73,6 @@
 
 <style lang="scss">
 	.u-page {
-		
+
 	}
 </style>

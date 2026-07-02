@@ -28,82 +28,30 @@
 			</u-cell>
 		</u-cell-group>
 		<u-modal
-			:content="content"
-			title="标题"
-			:show="show1"
-			@confirm="() => show1 = false"
-		></u-modal>
-		<u-modal
-			:content="content"
-			:show="show2"
-			@confirm="() => show2 = false"
-		></u-modal>
-		<u-modal
-			:content="content"
-			:show="show3"
-			showCancelButton
-			closeOnClickOverlay
-			@confirm="confirm"
-			@cancel="cancel"
-			@close="close"
-		></u-modal>
-		<u-modal
-			:content="content"
-			:show="show4"
-			showCancelButton
-			asyncClose
-			@confirm="confirm4"
-			@cancel="() => show4 = false"
-		></u-modal>
-		<u-modal
-			:content="content"
-			:show="show5"
-			showCancelButton
-			buttonReverse
-			@confirm="() => show5 = false"
-			@cancel="() => show5 = false"
-		></u-modal>
-		<u-modal
-			:content="content"
-			title="标题"
-			:show="show6"
-			closeOnClickOverlay
-			@confirm="() => show6 = false"
-			@close="() => show6 = false"
-		></u-modal>
-		<u-modal
-			title="利剑出鞘,一统江湖"
-			:show="show7"
-			closeOnClickOverlay
-			@confirm="() => show7 = false"
+			v-for="(modal, index) in modalConfigs"
+			:key="modal.key"
+			:content="modal.content"
+			:title="modal.title"
+			:show="modal.show"
+			:showCancelButton="modal.showCancelButton"
+			:closeOnClickOverlay="modal.closeOnClickOverlay"
+			:asyncClose="modal.asyncClose"
+			:buttonReverse="modal.buttonReverse"
+			:zoom="modal.zoom"
+			@confirm="confirmModal(index)"
+			@cancel="cancelModal(index)"
+			@close="closeModal(index)"
 		>
-			<image
-				style="width: 80px;height: 80px;"
-				src="/static/uview/common/logo.png"
-			></image>
-		</u-modal>
-		<u-modal
-			title="标题"
-			:show="show8"
-			:content="content"
-			closeOnClickOverlay
-			showCancelButton
-		>
+			<image v-if="modal.slotType === 'image'" style="width: 80px;height: 80px;" src="/static/uview/common/logo.png"></image>
 			<u-button
+				v-if="modal.confirmButtonSlot"
 				slot="confirmButton"
 				text="确定"
 				type="success"
 				shape="circle"
-				@click="show8 = false"
+				@click="closeModal(index)"
 			></u-button>
 		</u-modal>
-		<u-modal
-			:content="content"
-			title="标题"
-			:show="show9"
-			:zoom="false"
-			@confirm="() => show9 = false"
-		></u-modal>
 	</view>
 </template>
 
@@ -112,15 +60,17 @@
 		data() {
 			return {
 				content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作',
-				show1: false,
-				show2: false,
-				show3: false,
-				show4: false,
-				show5: false,
-				show6: false,
-				show7: false,
-				show8: false,
-				show9: false,
+				modalConfigs: [
+					{ key: 'basic', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false },
+					{ key: 'no-title', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false },
+					{ key: 'cancel', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, closeOnClickOverlay: true },
+					{ key: 'async', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, asyncClose: true },
+					{ key: 'reverse', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, buttonReverse: true },
+					{ key: 'overlay', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, closeOnClickOverlay: true },
+					{ key: 'slot', title: '利剑出鞘,一统江湖', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, closeOnClickOverlay: true, slotType: 'image' },
+					{ key: 'confirm-button', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, closeOnClickOverlay: true, confirmButtonSlot: true },
+					{ key: 'zoom', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, zoom: false }
+				],
 				list: [{
 						title: '基础使用',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/4.png'
@@ -162,27 +112,35 @@
 		},
 		methods: {
 			showModal(index) {
-				this[`show${index + 1}`] = true
+				this.modalConfigs[index].show = true
 			},
 			navigateBack() {
 				uni.navigateBack()
 			},
-			confirm4() {
-				setTimeout(() => {
-					this.show4 = false
-				}, 2000)
+			confirmModal(index) {
+				const modal = this.modalConfigs[index]
+				if (modal.asyncClose) {
+					setTimeout(() => {
+						this.modalConfigs[index].show = false
+					}, 2000)
+				} else {
+					this.modalConfigs[index].show = false
+				}
+				if (index === 2) {
+					console.log('confirm')
+				}
 			},
-			confirm() {
-				this.show3 = false
-				console.log('confirm');
+			cancelModal(index) {
+				this.modalConfigs[index].show = false
+				if (index === 2) {
+					console.log('cancel')
+				}
 			},
-			cancel() {
-				this.show3 = false
-				console.log('cancel');
-			},
-			close() {
-				this.show3 = false
-				console.log('close');
+			closeModal(index) {
+				this.modalConfigs[index].show = false
+				if (index === 2) {
+					console.log('close')
+				}
 			}
 		}
 	}
