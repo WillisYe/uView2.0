@@ -1,52 +1,15 @@
 <template>
 	<view class="u-page">
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">基础使用</text>
+		<view
+			v-for="section in sections"
+			:key="section.title"
+			class="u-demo-block"
+		>
+			<text class="u-demo-block__title">{{ section.title }}</text>
 			<view class="u-demo-block__content">
 				<u--textarea
-					v-model="value1"
-					placeholder="请输入内容"
-				></u--textarea>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">字数统计</text>
-			<view class="u-demo-block__content">
-				<u--textarea
-					v-model="value2"
-					placeholder="请输入内容"
-					count
-				></u--textarea>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">自动增高</text>
-			<view class="u-demo-block__content">
-				<u--textarea
-					v-model="value3"
-					placeholder="请输入内容"
-					autoHeight
-				></u--textarea>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">禁用状态</text>
-			<view class="u-demo-block__content">
-				<u--textarea
-					v-model="value4"
-					placeholder="文本域已被禁用"
-					disabled
-					count
-				></u--textarea>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">下划线模式</text>
-			<view class="u-demo-block__content">
-				<u--textarea
-					v-model="value5"
-					placeholder="请输入内容"
-					border="bottom"
+					v-model="form[section.valueKey]"
+					v-bind="section.props"
 				></u--textarea>
 			</view>
 		</view>
@@ -57,11 +20,40 @@
 	export default {
 		data() {
 			return {
-				value1: '',
-				value2: '统计字数',
-				value3: '',
-				value4: '',
-				value5: ''
+				form: {
+					value1: '',
+					value2: '统计字数',
+					value3: '',
+					value4: '',
+					value5: ''
+				},
+				sections: [
+					{
+						title: '基础使用',
+						valueKey: 'value1',
+						props: { placeholder: '请输入内容' }
+					},
+					{
+						title: '字数统计',
+						valueKey: 'value2',
+						props: { placeholder: '请输入内容', count: true }
+					},
+					{
+						title: '自动增高',
+						valueKey: 'value3',
+						props: { placeholder: '请输入内容', autoHeight: true }
+					},
+					{
+						title: '禁用状态',
+						valueKey: 'value4',
+						props: { placeholder: '文本域已被禁用', disabled: true, count: true }
+					},
+					{
+						title: '下划线模式',
+						valueKey: 'value5',
+						props: { placeholder: '请输入内容', border: 'bottom' }
+					}
+				]
 			}
 		},
 		methods: {

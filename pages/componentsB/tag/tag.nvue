@@ -1,241 +1,22 @@
 <template>
 	<view class="u-page">
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">基础功能</text>
+		<view
+			v-for="section in sections"
+			:key="section.title"
+			class="u-demo-block"
+		>
+			<text class="u-demo-block__title">{{ section.title }}</text>
 			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
+				<view
+					v-for="(item, index) in section.items"
+					:key="section.title + index"
+					class="u-page__tag-item"
+				>
 					<u-tag
-					    text="标签"
-					    plain
-					    size="mini"
-					    type="warning"
-					>
-					</u-tag>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">自定义主题</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-tag text="标签">
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="warning"
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="success"
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="error"
-					>
-					</u-tag>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">圆形标签</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    plain
-						shape="circle"
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="warning"
-						shape="circle"
-					>
-					</u-tag>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">镂空标签</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    plain
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="warning"
-					    plain
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="success"
-					    plain
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="error"
-					    plain
-					>
-					</u-tag>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">镂空带背景色</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    plain
-					    plainFill
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="warning"
-					    plain
-					    plainFill
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="success"
-					    plain
-					    plainFill
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="error"
-					    plain
-					    plainFill
-					>
-					</u-tag>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">自定义尺寸</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    plain
-					    size="mini"
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="warning"
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="success"
-					    plain
-					    size="large"
-					>
-					</u-tag>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">可关闭标签</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    size="mini"
-					    closable
-					    :show="close1"
-					    @close="close1 = false"
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="warning"
-					    closable
-						:show="close2"
-					    @close="close2 = false"
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="success"
-					    plain
-					    size="large"
-					    closable
-						:show="close3"
-					    @close="close3 = false"
-					>
-					</u-tag>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">带图片和图标</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    size="mini"
-					    icon="map"
-					    plain
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="warning"
-					    icon="tags-fill"
-					>
-					</u-tag>
-				</view>
-				<view class="u-page__tag-item">
-					<u-tag
-					    text="标签"
-					    type="success"
-					    plain
-					    size="large"
-					    icon="https://cdn.uviewui.com/uview/example/tag.png"
-					>
-					</u-tag>
+						v-bind="item"
+						:show="item.show"
+						@close="item.show = false"
+					></u-tag>
 				</view>
 			</view>
 		</view>
@@ -284,9 +65,72 @@
 	export default {
 		data() {
 			return {
-				close1: true,
-				close2: true,
-				close3: true,
+				sections: [
+					{
+						title: '基础功能',
+						items: [
+							{ text: '标签', plain: true, size: 'mini', type: 'warning', show: true }
+						]
+					},
+					{
+						title: '自定义主题',
+						items: [
+							{ text: '标签', show: true },
+							{ text: '标签', type: 'warning', show: true },
+							{ text: '标签', type: 'success', show: true },
+							{ text: '标签', type: 'error', show: true }
+						]
+					},
+					{
+						title: '圆形标签',
+						items: [
+							{ text: '标签', plain: true, shape: 'circle', show: true },
+							{ text: '标签', type: 'warning', shape: 'circle', show: true }
+						]
+					},
+					{
+						title: '镂空标签',
+						items: [
+							{ text: '标签', plain: true, show: true },
+							{ text: '标签', type: 'warning', plain: true, show: true },
+							{ text: '标签', type: 'success', plain: true, show: true },
+							{ text: '标签', type: 'error', plain: true, show: true }
+						]
+					},
+					{
+						title: '镂空带背景色',
+						items: [
+							{ text: '标签', plain: true, plainFill: true, show: true },
+							{ text: '标签', type: 'warning', plain: true, plainFill: true, show: true },
+							{ text: '标签', type: 'success', plain: true, plainFill: true, show: true },
+							{ text: '标签', type: 'error', plain: true, plainFill: true, show: true }
+						]
+					},
+					{
+						title: '自定义尺寸',
+						items: [
+							{ text: '标签', plain: true, size: 'mini', show: true },
+							{ text: '标签', type: 'warning', show: true },
+							{ text: '标签', type: 'success', plain: true, size: 'large', show: true }
+						]
+					},
+					{
+						title: '可关闭标签',
+						items: [
+							{ text: '标签', size: 'mini', closable: true, show: true },
+							{ text: '标签', type: 'warning', closable: true, show: true },
+							{ text: '标签', type: 'success', plain: true, size: 'large', closable: true, show: true }
+						]
+					},
+					{
+						title: '带图片和图标',
+						items: [
+							{ text: '标签', size: 'mini', icon: 'map', plain: true, show: true },
+							{ text: '标签', type: 'warning', icon: 'tags-fill', show: true },
+							{ text: '标签', type: 'success', plain: true, size: 'large', icon: 'https://cdn.uviewui.com/uview/example/tag.png', show: true }
+						]
+					}
+				],
 				radios: [{
 						checked: true
 					},

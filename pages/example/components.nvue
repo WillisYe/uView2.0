@@ -2,8 +2,8 @@
 	<view class="wrap">
 		<page-nav :desc="desc"></page-nav>
 		<view class="list-wrap">
-			<u-cell-group title-bg-color="rgb(243, 244, 246)" :title="item.groupName" v-for="(item, index) in list" :key="index">
-				<u-cell :titleStyle="{fontWeight: 500}" :title="item1.title"
+			<u-cell-group v-if="showGroup(item)" title-bg-color="rgb(243, 244, 246)" :title="item.groupName" v-for="(item, index) in list" :key="index">
+				<u-cell v-if="item1.show" :titleStyle="{fontWeight: 500}" :title="item1.title"
 				 v-for="(item1, index1) in item.list" :key="index1" isLink @click="openPage" :name="item1.path">
 					<image slot="icon" class="u-cell-icon" :src="getIcon(item1.icon)" mode="widthFix"></image>
 				</u-cell>
@@ -47,6 +47,9 @@
 					url: path
 				})
 			},
+			showGroup(item) {
+				return item.list.filter(i => i.show).length
+			}
 		}
 	}
 </script>
@@ -58,13 +61,13 @@
 </style>
 
 <style lang="scss" >
-	
+
 	.u-cell-icon1 {
 		width: 36rpx;
 		height: 36rpx;
 		margin-right: 8rpx;
 	}
-	
+
 	.u-cell-group__title__text {
 		font-weight: bold;
 	}

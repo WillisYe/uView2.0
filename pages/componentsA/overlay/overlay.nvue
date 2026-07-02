@@ -8,11 +8,11 @@
 			placeholder
 		></u-navbar>
 		<u-cell
+			v-for="(item, index) in list"
+			:key="index"
 			:titleStyle="{fontWeight: 500}"
 			@click="openMask(index)"
 			:title="item.title"
-			v-for="(item, index) in list"
-			:key="index"
 			isLink
 		>
 			<image

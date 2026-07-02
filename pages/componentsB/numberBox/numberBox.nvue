@@ -2,171 +2,33 @@
 	<view class="">
 		<u-cell-group :border="true">
 			<u-cell
-			    :border="true"
-			    title="基础用法"
+				v-for="item in numberBoxItems"
+				:key="item.title"
+				:border="true"
+				:title="item.title"
 			>
 				<u-number-box
-				    slot="right-icon"
-				    v-model="value1"
-				    step="1"
-				    @change="change"
-				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="步长设置"
-			>
+					slot="right-icon"
+					v-if="!item.custom"
+					:value="item.value"
+					@input="item.value = $event"
+					v-bind="item.props"
+					@change="item.async ? myAsyncChange : change"
+				></u-number-box>
 				<u-number-box
-				    slot="right-icon"
-				    v-model="value2"
-				    :step="step1"
-				    @change="change"
+					slot="right-icon"
+					v-else
+					:value="item.value"
+					@input="item.value = $event"
+					v-bind="item.props"
+					:showMinus="item.value > 0"
 				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="限制输入范围"
-			>
-				<u-number-box
-				    slot="right-icon"
-				    v-model="value3"
-				    step="1"
-				    :min="min1"
-				    :max="max1"
-				    @change="change"
-				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="限制输入整数"
-			>
-				<u-number-box
-				    slot="right-icon"
-				    v-model="value4"
-				    step="1"
-				    integer
-				    @change="change"
-				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="禁用状态"
-			>
-				<u-number-box
-				    slot="right-icon"
-				    v-model="value5"
-				    step="1"
-				    :disabled="true"
-				    @change="change"
-				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="禁用输入框"
-			>
-				<u-number-box
-				    slot="right-icon"
-				    v-model="value6"
-				    step="1"
-				    :disabledInput="true"
-				    @change="change"
-				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="禁用长按"
-			>
-				<u-number-box
-				    slot="right-icon"
-				    v-model="value7"
-				    step="1"
-				    :longPress="false"
-				    @change="change"
-				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="固定小数位数"
-			>
-				<u-number-box
-				    slot="right-icon"
-				    v-model="value8"
-				    step="0.2"
-				    decimalLength="1"
-				    @change="change"
-				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="异步变更"
-			>
-				<u-number-box
-				    slot="right-icon"
-				    v-model="value9"
-				    step="1"
-				    :asyncChange="asyncChange"
-				    @change="myAsyncChange"
-				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="自定义大小颜色样式"
-			>
-				<u-number-box
-				    slot="right-icon"
-				    v-model="value10"
-				    step="1"
-				    :color="color"
-				    :buttonSize="buttonSize"
-				    :bgColor="bgColor"
-				    @change="change"
-				    iconStyle="color: #fff"
-				>
-				</u-number-box>
-			</u-cell>
-			<u-cell
-			    :border="true"
-			    title="自定义(为0时减少按钮会消失)"
-			>
-				<u-number-box
-				    slot="right-icon"
-				    v-model="value11"
-				    step="1"
-				    :min="0"
-				    :showMinus="value11 > 0"
-				>
-					<view
-					    slot="minus"
-					    class="minus"
-					>
-						<u-icon
-						    name="minus"
-						    size="12"
-						></u-icon>
+					<view slot="minus" class="minus">
+						<u-icon name="minus" size="12"></u-icon>
 					</view>
-					<text
-					    slot="input"
-					    style="width: 50px;text-align: center;"
-					    class="input"
-					>{{value11}}</text>
-					<view
-					    slot="plus"
-					    class="plus"
-					>
-						<u-icon
-						    name="plus"
-						    color="#FFFFFF"
-						    size="12"
-						></u-icon>
+					<text slot="input" style="width: 50px;text-align: center;" class="input">{{ item.value }}</text>
+					<view slot="plus" class="plus">
+						<u-icon name="plus" color="#FFFFFF" size="12"></u-icon>
 					</view>
 				</u-number-box>
 			</u-cell>
@@ -178,24 +40,20 @@
 	export default {
 		data() {
 			return {
-				value1: 3,
-				value2: 3,
-				value3: 3,
-				value4: 3,
-				value5: 3,
-				value6: 3,
-				value7: 3,
-				value8: 3.1,
-				value9: 3,
-				value10: 3,
-				value11: 3,
-				step1: 2,
-				min1: 5,
-				max1: 8,
-				asyncChange: true,
-				color: '#FFFFFF',
-				buttonSize: 36,
-				bgColor: '#2979ff'
+				numberBoxItems: [
+					{ title: '基础用法', value: 3, props: { step: '1' } },
+					{ title: '步长设置', value: 3, props: { step: 2 } },
+					{ title: '限制输入范围', value: 3, props: { step: '1', min: 5, max: 8 } },
+					{ title: '限制输入整数', value: 3, props: { step: '1', integer: true } },
+					{ title: '禁用状态', value: 3, props: { step: '1', disabled: true } },
+					{ title: '禁用输入框', value: 3, props: { step: '1', disabledInput: true } },
+					{ title: '禁用长按', value: 3, props: { step: '1', longPress: false } },
+					{ title: '固定小数位数', value: 3.1, props: { step: '0.2', decimalLength: '1' } },
+					{ title: '异步变更', value: 3, props: { step: '1', asyncChange: true }, async: true },
+					{ title: '自定义大小颜色样式', value: 3, props: { step: '1', color: '#FFFFFF', buttonSize: 36, bgColor: '#2979ff', iconStyle: 'color: #fff' } },
+					{ title: '自定义(为0时减少按钮会消失)', value: 3, props: { step: '1', min: 0 }, custom: true }
+				],
+				asyncChange: true
 			}
 		},
 		methods: {
@@ -209,7 +67,7 @@
 				})
 				setTimeout(() => {
 					uni.hideLoading()
-					this.value9 = e
+					this.numberBoxItems[8].value = e
 					this.asyncChange = true
 				}, 3000)
 			}

@@ -1,75 +1,17 @@
 <template>
 	<view class="u-page">
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">基础功能</text>
-			<view class="u-demo-block__content">
-				<u-line-progress :percentage="percentage1">
-				</u-line-progress>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">不显示百分比</text>
-			<view class="u-demo-block__content">
-				<u-line-progress
-				    :showText="false"
-				    :percentage="percentage2"
-				>
-				</u-line-progress>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">自定义高度</text>
-			<view class="u-demo-block__content">
-				<u-line-progress
-				    height="8"
-				    :showText="false"
-				    :percentage="percentage3"
-				>
-				</u-line-progress>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">自定义颜色</text>
-			<view class="u-demo-block__content">
-				<u-line-progress
-				    height="8"
-				    :showText="false"
-				    :percentage="percentage4"
-				    activeColor="#3c9cff"
-				    inactiveColor="#f3f4f6"
-				>
-				</u-line-progress>
-			</view>
-		</view>
 		<view
-		    class="u-demo-block"
-		    v-if="!androidNvue"
+			v-for="section in progressSections"
+			:key="section.title"
+			class="u-demo-block"
+			v-if="section.title !== '手动加减' || !androidNvue"
 		>
-			<text class="u-demo-block__title">自定义样式(不支持安卓环境的nvue)</text>
+			<text class="u-demo-block__title">{{ section.title }}</text>
 			<view class="u-demo-block__content">
-				<u-line-progress
-				    height="8"
-				    :showText="false"
-				    :percentage="percentage5"
-				    activeColor="#3c9cff"
-				    inactiveColor="#f3f4f6"
-				>
-					<text class="u-percentage-slot">{{percentage4}}%</text>
+				<u-line-progress v-bind="section.props">
+					<text v-if="section.slot" class="u-percentage-slot">{{ section.slotText }}%</text>
 				</u-line-progress>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">手动加减</text>
-			<view class="u-demo-block__content">
-				<u-line-progress
-				    height="8"
-				    :showText="false"
-				    :percentage="percentage6"
-				    activeColor="#3c9cff"
-				    inactiveColor="#f3f4f6"
-				>
-				</u-line-progress>
-				<view class="button-group">
+				<view v-if="section.action" class="button-group">
 					<view class="button-group__circle" hover-class="u-hover-class" @click="computedWidth('minus')">
 						<text class="button-group__circle__text">减少</text>
 					</view>
@@ -93,6 +35,14 @@
 				percentage4: 60,
 				percentage5: 70,
 				percentage6: 50,
+				progressSections: [
+					{ title: '基础功能', props: { percentage: 30 } },
+					{ title: '不显示百分比', props: { percentage: 40, showText: false } },
+					{ title: '自定义高度', props: { percentage: 50, height: '8', showText: false } },
+					{ title: '自定义颜色', props: { percentage: 60, height: '8', showText: false, activeColor: '#3c9cff', inactiveColor: '#f3f4f6' } },
+					{ title: '自定义样式(不支持安卓环境的nvue)', props: { percentage: 70, height: '8', showText: false, activeColor: '#3c9cff', inactiveColor: '#f3f4f6' }, slot: true, slotText: 70 },
+					{ title: '手动加减', props: { percentage: 50, height: '8', showText: false, activeColor: '#3c9cff', inactiveColor: '#f3f4f6' }, action: true }
+				]
 			}
 		},
 		onLoad() {
@@ -100,16 +50,15 @@
 			this.androidNvue = uni.$u.os() === 'android'
 			// #endif
 			uni.$u.sleep(2500).then(() => {
-				this.percentage1 = 120
+				this.progressSections[0].props.percentage = 120
 			})
 		},
 		methods: {
 			computedWidth(type) {
-				if(type === 'plus') {
-					this.percentage6 = uni.$u.range(0, 100, this.percentage6 + 10)
-				} else {
-					this.percentage6 = uni.$u.range(0, 100, this.percentage6 - 10)
-				}
+				const next = type === 'plus'
+					? uni.$u.range(0, 100, this.progressSections[5].props.percentage + 10)
+					: uni.$u.range(0, 100, this.progressSections[5].props.percentage - 10)
+				this.progressSections[5].props.percentage = next
 			}
 		},
 	}
@@ -132,11 +81,11 @@
 		flex-wrap: nowrap;
 		align-items: stretch;
 	}
-	
+
 	.button-group {
 		@include flex;
 		justify-content: center;
-		
+
 		&__circle {
 			width: 50px;
 			height: 50px;
@@ -145,7 +94,7 @@
 			justify-content: center;
 			align-items: center;
 			margin: 30px 30px;
-		
+
 			&__text {
 				color: rgb(25, 190, 107);
 				font-size: 13px;

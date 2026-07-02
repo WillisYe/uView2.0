@@ -1,125 +1,30 @@
 <template>
 	<view class="cell-page">
-		<view class="u-page__item">
-			<text class="u-page__item__title">基础功能</text>
+		<view
+			v-for="section in sections"
+			:key="section.title"
+			class="u-page__item"
+		>
+			<text class="u-page__item__title">{{ section.title }}</text>
 			<u-cell-group>
-				<u-cell
-				    title="uView UI"
-				    value="内容"
-				    :isLink="true"
-				></u-cell>
-				<u-cell
-				    title="利剑出鞘,一统江湖"
-				    value="内容"
-				    label="挣脱束缚,向往自由"
-				></u-cell>
-			</u-cell-group>
-		</view>
-		<view class="u-page__item">
-			<text class="u-page__item__title">自定义图标/图片</text>
-			<u-cell-group>
-				<u-cell
-				    title="单元格"
-				    icon="lock-fill"
-				></u-cell>
-				<u-cell
-				    title="单元格"
-				    icon="https://cdn.uviewui.com/uview/example/tag.png"
-				></u-cell>
-			</u-cell-group>
-		</view>
-		<view class="u-page__item">
-			<text class="u-page__item__title">自定义大小</text>
-			<u-cell-group>
-				<u-cell
-				    size="large"
-				    title="单元格"
-				    value="内容"
-					isLink
-				></u-cell>
-				<u-cell
-				    size="large"
-				    title="单元格"
-				    value="内容"
-				    label="描述信息"
-				></u-cell>
-			</u-cell-group>
-		</view>
-		<view class="u-page__item">
-			<text class="u-page__item__title">显示右箭头</text>
-			<u-cell-group>
-				<u-cell
-				    title="单元格"
-				    value="组件"
-				    isLink
-				></u-cell>
-				<u-cell
-				    title="单元格"
-				    value="工具"
-				    arrow-direction="up"
-				    isLink
-				></u-cell>
-				<u-cell
-				    title="单元格"
-				    value="模板"
-				    arrow-direction="down"
-				    isLink
-				></u-cell>
-			</u-cell-group>
-		</view>
-		<view class="u-page__item">
-			<text class="u-page__item__title">跳转页面</text>
-			<u-cell-group>
-				<u-cell
-				    title="打开标签页"
-				    isLink
-				    url="/pages/componentsB/tag/tag"
-				></u-cell>
-				<u-cell
-				    title="打开徽标页"
-				    isLink
-				    url="/pages/componentsB/badge/badge"
-				></u-cell>
-			</u-cell-group>
-		</view>
-		<view class="u-page__item">
-			<text class="u-page__item__title">右侧内容垂直居中</text>
-			<u-cell-group>
-				<u-cell
-				    title="单元格"
-				    value="内容"
-				    label="描述信息"
-				    center
-				></u-cell>
-			</u-cell-group>
-		</view>
-		<view class="u-page__item">
-			<text class="u-page__item__title">自定义插槽</text>
-			<u-cell-group>
-				<u-cell value="内容">
-					<view
-					    slot="title"
-					    class="u-slot-title"
-					>
-						<text class="u-cell-text">单元格</text>
-						<u-tag
-						    text="标签"
-						    plain
-						    size="mini"
-						    type="warning"
-						>
-						</u-tag>
-					</view>
-				</u-cell>
-				<u-cell
-				    title="单元格"
-					isLink
-				>
-					<text
-					    slot="value"
-					    class="u-slot-value"
-					>99</text>
-				</u-cell>
+				<template v-for="(item, index) in section.items">
+					<u-cell v-bind="item" :key="section.title + '-' + index">
+						<template v-if="item.slotTitle" slot="title">
+							<view class="u-slot-title">
+								<text class="u-cell-text">{{ item.slotTitle }}</text>
+								<u-tag
+									text="标签"
+									plain
+									size="mini"
+									type="warning"
+								></u-tag>
+							</view>
+						</template>
+						<template v-if="item.slotValue" slot="value">
+							<text class="u-slot-value">{{ item.slotValue }}</text>
+						</template>
+					</u-cell>
+				</template>
 			</u-cell-group>
 		</view>
 		<u-gap height="30"></u-gap>
@@ -128,7 +33,59 @@
 <script>
 	export default {
 		data() {
-			return {}
+			return {
+				sections: [
+					{
+						title: '基础功能',
+						items: [
+							{ title: 'uView UI', value: '内容', isLink: true },
+							{ title: '利剑出鞘,一统江湖', value: '内容', label: '挣脱束缚,向往自由' }
+						]
+					},
+					{
+						title: '自定义图标/图片',
+						items: [
+							{ title: '单元格', icon: 'lock-fill' },
+							{ title: '单元格', icon: 'https://cdn.uviewui.com/uview/example/tag.png' }
+						]
+					},
+					{
+						title: '自定义大小',
+						items: [
+							{ size: 'large', title: '单元格', value: '内容', isLink: true },
+							{ size: 'large', title: '单元格', value: '内容', label: '描述信息' }
+						]
+					},
+					{
+						title: '显示右箭头',
+						items: [
+							{ title: '单元格', value: '组件', isLink: true },
+							{ title: '单元格', value: '工具', arrowDirection: 'up', isLink: true },
+							{ title: '单元格', value: '模板', arrowDirection: 'down', isLink: true }
+						]
+					},
+					{
+						title: '跳转页面',
+						items: [
+							{ title: '打开标签页', isLink: true, url: '/pages/componentsB/tag/tag' },
+							{ title: '打开徽标页', isLink: true, url: '/pages/componentsB/badge/badge' }
+						]
+					},
+					{
+						title: '右侧内容垂直居中',
+						items: [
+							{ title: '单元格', value: '内容', label: '描述信息', center: true }
+						]
+					},
+					{
+						title: '自定义插槽',
+						items: [
+							{ value: '内容', slotTitle: '单元格' },
+							{ title: '单元格', isLink: true, slotValue: '99' }
+						]
+					}
+				]
+			}
 		},
 		methods: {
 			click() {

@@ -1,118 +1,22 @@
 <template>
 	<view class="u-page">
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">基础功能</text>
+		<view
+			v-for="section in sections"
+			:key="section.title"
+			class="u-demo-block"
+		>
+			<text class="u-demo-block__title">{{ section.title }}</text>
 			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
+				<view
+					v-for="(item, index) in section.items"
+					:key="section.title + index"
+					class="u-page__tag-item"
+				>
 					<u-switch
-						v-model="value1"
-						@change="change"
-					></u-switch>
-				</view>
-				<view class="u-page__tag-item">
-					<u-switch v-model="value2"></u-switch>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">加载中</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-switch
-						v-model="value3"
-						loading
-					></u-switch>
-				</view>
-				<view class="u-page__tag-item">
-					<u-switch
-						v-model="value4"
-						loading
-					></u-switch>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">禁用状态</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-switch
-						v-model="value5"
-						disabled
-					></u-switch>
-				</view>
-				<view class="u-page__tag-item">
-					<u-switch
-						v-model="value6"
-						disabled
-					></u-switch>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">自定义尺寸</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-switch
-						v-model="value7"
-						size="28"
-					></u-switch>
-				</view>
-				<view class="u-page__tag-item">
-					<u-switch
-						v-model="value8"
-						size="20"
-					></u-switch>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">自定义颜色</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-switch
-						v-model="value9"
-						activeColor="#f56c6c"
-						loading
-					></u-switch>
-				</view>
-				<view class="u-page__tag-item">
-					<u-switch
-						v-model="value10"
-						activeColor="#5ac725"
-						loading
-					></u-switch>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">自定义样式</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-switch
-						:space="2"
-						v-model="value11"
-						activeColor="#f56c6c"
-						inactiveColor="rgb(230, 230, 230)"
-					></u-switch>
-				</view>
-				<view class="u-page__tag-item">
-					<u-switch
-						space="2"
-						v-model="value12"
-						activeColor="#f9ae3d"
-						inactiveColor="rgb(230, 230, 230)"
-					></u-switch>
-				</view>
-			</view>
-		</view>
-		<view class="u-demo-block">
-			<text class="u-demo-block__title">异步控制</text>
-			<view class="u-demo-block__content">
-				<view class="u-page__tag-item">
-					<u-switch
-						v-model="value13"
-						asyncChange
-						@change="asyncChange"
+						v-bind="item"
+						:value="item.value"
+						@input="item.value = $event"
+						@change="item.onChange ? item.onChange($event) : change($event)"
 					></u-switch>
 				</view>
 			</view>
@@ -124,24 +28,56 @@
 	export default {
 		data() {
 			return {
-				value1: false,
-				value2: true,
-				value3: false,
-				value4: true,
-				value5: false,
-				value6: true,
-				value7: false,
-				value8: true,
-				value9: true,
-				value10: true,
-				value11: false,
-				value12: true,
-				value13: true,
-			}
-		},
-		watch: {
-			value1(newValue, oldValue) {
-				console.log('v-model', newValue);
+				sections: [
+					{
+						title: '基础功能',
+						items: [
+							{ value: false, onChange: this.change },
+							{ value: true }
+						]
+					},
+					{
+						title: '加载中',
+						items: [
+							{ value: false, loading: true },
+							{ value: true, loading: true }
+						]
+					},
+					{
+						title: '禁用状态',
+						items: [
+							{ value: false, disabled: true },
+							{ value: true, disabled: true }
+						]
+					},
+					{
+						title: '自定义尺寸',
+						items: [
+							{ value: false, size: '28' },
+							{ value: true, size: '20' }
+						]
+					},
+					{
+						title: '自定义颜色',
+						items: [
+							{ value: true, activeColor: '#f56c6c', loading: true },
+							{ value: true, activeColor: '#5ac725', loading: true }
+						]
+					},
+					{
+						title: '自定义样式',
+						items: [
+							{ value: false, space: '2', activeColor: '#f56c6c', inactiveColor: 'rgb(230, 230, 230)' },
+							{ value: true, space: '2', activeColor: '#f9ae3d', inactiveColor: 'rgb(230, 230, 230)' }
+						]
+					},
+					{
+						title: '异步控制',
+						items: [
+							{ value: true, asyncChange: true, onChange: this.asyncChange }
+						]
+					}
+				]
 			}
 		},
 		methods: {
@@ -153,7 +89,7 @@
 					content: e ? '确定要打开吗' : '确定要关闭吗',
 					success: (res) => {
 						if (res.confirm) {
-							this.value13 = e
+							this.sections[6].items[0].value = e
 						}
 					}
 				})
