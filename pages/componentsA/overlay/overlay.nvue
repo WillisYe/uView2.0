@@ -23,23 +23,15 @@
 			></image>
 		</u-cell>
 		<u-overlay
-			:show="show"
-			@click="show = !show"
-		></u-overlay>
-
-		<u-overlay
-			:show="showSlot"
-			@click="showSlot = !showSlot"
+			v-for="(overlay, index) in overlays"
+			:key="overlay.key"
+			:show="overlay.show"
+			:opacity="overlay.opacity"
+			@click="toggleOverlay(index)"
 		>
-			<view class="overlay-wrap">
+			<view v-if="overlay.slot" class="overlay-wrap">
 				<view class="overlay-wrap__box"></view>
 			</view>
-		</u-overlay>
-		<u-overlay
-			opacity=".85"
-			:show="showOpcatiy"
-			@click="showOpcatiy = !showOpcatiy"
-		>
 		</u-overlay>
 	</view>
 </template>
@@ -48,9 +40,11 @@
 	export default {
 		data() {
 			return {
-				show: false,
-				showSlot: false,
-				showOpcatiy: false,
+				overlays: [
+					{ key: 'base', show: false },
+					{ key: 'slot', show: false, slot: true },
+					{ key: 'opacity', show: false, opacity: '.85' }
+				],
 				list: [{
 						title: '基本案列',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/overlay/baseCases.png'
@@ -68,13 +62,10 @@
 		},
 		methods: {
 			openMask(indexNum) {
-				if (indexNum == 0) {
-					this.show = !this.show;
-				} else if (indexNum == 1) {
-					this.showSlot = !this.showSlot
-				} else if (indexNum == 2) {
-					this.showOpcatiy = !this.showOpcatiy
-				}
+				this.overlays[indexNum].show = !this.overlays[indexNum].show
+			},
+			toggleOverlay(index) {
+				this.overlays[index].show = false
 			},
 			navigateBack() {
 				uni.navigateBack()

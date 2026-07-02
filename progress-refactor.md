@@ -5,7 +5,7 @@
 - 已经是 JS 遍历或无法安全遍历的页面忽略。
 
 ## 已完成
-- 完成了 button、alert、badge、color、toast、actionSheet、modal、slider 等页面的数组驱动改造。
+- 完成了 button、alert、badge、color、toast、actionSheet、modal、slider、overlay、divider 等页面的数组驱动改造。
 - 保留原有交互逻辑与展示结构，尽量不改变业务行为。
 
 ## 后续建议
