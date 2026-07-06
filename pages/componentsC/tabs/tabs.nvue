@@ -7,7 +7,7 @@
 				</u-tabs>
 			</view>
 		</view>
-		<view
+		<!-- <view
 			class="u-demo-block"
 			style="margin-bottom: 0;"
 		>
@@ -22,7 +22,7 @@
 		<u-gap
 			height="23"
 			bgColor="#fff"
-		></u-gap>
+		></u-gap> -->
 		<view class="u-demo-block">
 			<text class="u-demo-block__title">显示徽标</text>
 			<view class="u-demo-block__content">
@@ -30,7 +30,7 @@
 				</u-tabs>
 			</view>
 		</view>
-		<view class="u-demo-block">
+		<!-- <view class="u-demo-block">
 			<text class="u-demo-block__title">禁止滚动</text>
 			<view class="u-demo-block__content">
 				<u-tabs :list="list6" :scrollable="false">
@@ -43,7 +43,7 @@
 				<u-tabs :list="list3">
 				</u-tabs>
 			</view>
-		</view>
+		</view> -->
 		<view class="u-demo-block">
 			<text class="u-demo-block__title">自定义样式</text>
 			<view class="u-demo-block__content">
@@ -122,7 +122,7 @@
 				}, {
 					name: '电影'
 				}, {
-					name: '科技'
+					name: '电视剧'
 				}, {
 					name: '音乐'
 				}, {

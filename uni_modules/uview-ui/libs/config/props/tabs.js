@@ -12,12 +12,13 @@ export default {
     tabs: {
         duration: 300,
         list: () => [],
-        lineColor: '#3c9cff',
+        lineColor: '#1455F2',
         activeStyle: () => ({
-            color: '#303133'
+            color: '#1455F2',
+            fontWeight: '600',
         }),
         inactiveStyle: () => ({
-            color: '#606266'
+            color: '#606266',
         }),
         lineWidth: 20,
         lineHeight: 3,

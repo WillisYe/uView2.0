@@ -21,4 +21,20 @@
 			line-height: 20px;
 		}
 	}
+
+	.u-tabs {
+		.u-tabs__wrapper__nav {
+			border-bottom: 1px solid #E5E6EB;
+		}
+		.u-tabs__wrapper__nav__item__text {
+			font-size: 16px;
+			line-height: 22px;
+		}
+		.u-tabs__wrapper__nav__line {
+			bottom: 0;
+		}
+		.u-badge {
+			transform: translate(-5px, -10px);
+		}
+	}
 }
