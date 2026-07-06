@@ -2,8 +2,8 @@
 	["u-icon", 125], // 蓝湖上没有，跳过
 	["u-popup", 60], // 蓝湖上没有，跳过
 	["u-button", 38], // 已处理
-	["u-action-sheet", 35], // 待处理
-	["u-modal", 30], // 待处理
+	["u-action-sheet", 35], // 已处理
+	["u-modal", 30], // 已处理
 	["u-tabs", 27], // 待处理
 	["u-loading-icon", 26], // 待处理
 	["u-search", 21], // 待处理

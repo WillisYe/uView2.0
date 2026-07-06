@@ -64,12 +64,12 @@
 					{ key: 'basic', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false },
 					{ key: 'no-title', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false },
 					{ key: 'cancel', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, closeOnClickOverlay: true },
-					{ key: 'async', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, asyncClose: true },
+					// { key: 'async', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, asyncClose: true },
 					{ key: 'reverse', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, buttonReverse: true },
-					{ key: 'overlay', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, closeOnClickOverlay: true },
+					// { key: 'overlay', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, closeOnClickOverlay: true },
 					{ key: 'slot', title: '利剑出鞘,一统江湖', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, closeOnClickOverlay: true, slotType: 'image' },
-					{ key: 'confirm-button', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, closeOnClickOverlay: true, confirmButtonSlot: true },
-					{ key: 'zoom', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, zoom: false }
+					// { key: 'confirm-button', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, showCancelButton: true, closeOnClickOverlay: true, confirmButtonSlot: true },
+					// { key: 'zoom', title: '标题', content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作', show: false, zoom: false }
 				],
 				list: [{
 						title: '基础使用',
@@ -83,30 +83,30 @@
 						title: '带取消按钮',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/2.png'
 					},
-					{
-						title: '异步关闭',
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/6.png'
-					},
+					// {
+					// 	title: '异步关闭',
+					// 	iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/6.png'
+					// },
 					{
 						title: '对调取消和确认按钮',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/3.png'
 					},
-					{
-						title: '允许点击遮罩关闭',
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/7.png'
-					},
+					// {
+					// 	title: '允许点击遮罩关闭',
+					// 	iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/7.png'
+					// },
 					{
 						title: '传入slot',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/1.png'
 					},
-					{
-						title: '自定义按钮',
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/8.png'
-					},
-					{
-						title: '淡入淡出动画',
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/9.png'
-					}
+					// {
+					// 	title: '自定义按钮',
+					// 	iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/8.png'
+					// },
+					// {
+					// 	title: '淡入淡出动画',
+					// 	iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/9.png'
+					// }
 				]
 			}
 		},

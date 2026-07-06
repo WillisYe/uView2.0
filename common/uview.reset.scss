@@ -1,7 +1,24 @@
-.u-button {
-	&.kui-icon-right {
-		.u-icon {
-			order: 2;
+.uni-body {
+	.u-button {
+		&.kui-icon-right {
+			.u-icon {
+				order: 2;
+			}
+		}
+	}
+
+	.u-modal {
+		.u-modal__title {
+			font-weight: 400;
+			font-size: 16px;
+			color: #4e5969;
+			line-height: 22px;
+		}
+		.u-modal__content__text {
+			font-weight: 400;
+			font-size: 14px;
+			color: #13234a;
+			line-height: 20px;
 		}
 	}
 }
