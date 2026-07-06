@@ -34,10 +34,23 @@
 			:cancelText="sheet.cancelText"
 			:description="sheet.description"
 			:title="sheet.sheetTitle"
-			:round="sheet.round"
+			:round="16"
 			@getuserinfo="getuserinfo"
 		>
-			<text v-if="sheet.slotContent" style="margin: 10px 20px 30px 20px; color: #303133; font-size: 15px;">{{ sheet.slotContent }}</text>
+			<text v-if="sheet.slotContent" style="margin: 10px 20px 30px 20px; color: #303133; font-size: 15px;">
+				{{ sheet.slotContent }}
+				<template v-if="true">
+					<u-line margin="32rpx 0"></u-line>
+					<u-row gutter="8">
+						<u-col span="6">
+							<u-button type="primary" :plain="true" text="按钮1"></u-button>
+						</u-col>
+						<u-col span="6">
+							<u-button type="primary" text="按钮2"></u-button>
+						</u-col>
+					</u-row>
+				</template>
+			</text>
 		</u-action-sheet>
 	</view>
 </template>
@@ -53,7 +66,7 @@
 						closeOnClickOverlay: false,
 						actions: [
 							{ name: '选项1' },
-							{ name: '选项2' },
+							{ name: '选项2', color:'#1455F2', },
 							{ name: '选项3', subname: '描述文本' }
 						]
 					},
@@ -74,7 +87,7 @@
 						cancelText: '取消',
 						actions: [
 							{ name: '选项1' },
-							{ name: '选项2' },
+							{ name: '选项2', color:'#1455F2', },
 							{ name: '选项3' }
 						]
 					},
@@ -82,12 +95,21 @@
 						title: '描述内容',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/actionSheet/desc.png',
 						show: false,
+						cancelText: '取消',
 						description: '这是一段描述文本,字号偏小,颜色偏淡',
 						actions: [
 							{ name: '选项1' },
-							{ name: '选项2' },
+							{ name: '选项2', color:'#1455F2', },
 							{ name: '选项3' }
 						]
+					},
+					{
+						title: '显示标题（显示圆角）带底部按钮',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/actionSheet/title.png',
+						show: false,
+						sheetTitle: '标题位置',
+						round: 10,
+						slotContent: '这是一段通过slot传入的内容,您可以在此自定义操作面板'
 					},
 					{
 						title: '显示标题(显示圆角)',
@@ -112,7 +134,6 @@
 				list: [{
 						title: '普通使用',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/actionSheet/custom.png'
-
 					},
 					{
 						title: '设置状态',
@@ -125,6 +146,10 @@
 					{
 						title: '描述内容',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/actionSheet/desc.png'
+					},
+					{
+						title: '显示标题（显示圆角）带底部按钮',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/actionSheet/title.png',
 					},
 					{
 						title: '显示标题(显示圆角)',
@@ -144,7 +169,7 @@
 			// 点击cell，判断显示哪个功能
 			openSheet(index) {
 				// #ifndef MP
-				if (index === 5) return uni.$u.toast('请在微信内预览')
+				if (index === 6) return uni.$u.toast('请在微信内预览')
 				// #endif
 				this.sheetConfigs[index].show = true
 			},

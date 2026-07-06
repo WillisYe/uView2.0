@@ -1,27 +1,62 @@
 [
-  "01-Color 色彩",
-  "02-Button 按钮",
-  "03-Text文本",
-  "04-布局栅格化",
-  "05-Badge 徽标数和 Tag 标签",
-  "06-Cell 单元格和 Form 表单",
-  "07-Calendar 日历",
-  "08-Picker 选择器",
-  "09-Search 搜索和NumberBox 步进器",
-  "10-Upload 上传和Code 验证码输入框",
-  "11-输入框 Input",
-  "12-Checkbox 复选框和Radio 单选框",
-  "13-ActionSheet 操作菜单",
-  "14-Toast 消息提示和NoticeBar 滚动通知",
-  "15-Notify 消息提示",
-  "16-Modal 模态框",
-  "17-Line 线条和Overlay 遮罩层",
-  "18-Tabbar 底部航档",
-  "19-Navbar 自定义导航栏",
-  "20-Tabs 标签",
-  "21-Subsection 分段器",
-  "22-IndexList 索引列表和ReadMore 展开阅读更多",
-  "23-Gap 间隔槽"
+	["u-icon", 125], // 蓝湖上没有，跳过
+	["u-popup", 60], // 蓝湖上没有，跳过
+	["u-button", 38], // 已处理
+	["u-action-sheet", 35], // 待处理
+	["u-modal", 30], // 待处理
+	["u-tabs", 27], // 待处理
+	["u-loading-icon", 26], // 待处理
+	["u-search", 21], // 待处理
+	["u-form-item", 18], // 待处理
+	["u-checkbox-group", 16], // 待处理
+	["u-col", 16], // 待处理
+	["u-radio-group", 14], // 待处理
+	["u-radio", 14], // 待处理
+	["u-checkbox", 13], // 待处理
+	["u-empty", 10], // 待处理
+	["u-alert", 10], // 待处理
+	["u-badge", 10], // 待处理
+	["u-tag", 9], // 待处理
+	["u-row", 8], // 待处理
+	["u-switch", 8], // 待处理
+	["u-input", 7], // 待处理
+	["u-form", 4], // 待处理
+	["u-loadmore", 3], // 待处理
+	["u-skeleton", 2], // 待处理
+	["u-cell-group", 2], // 待处理
+	["u-cell", 2], // 待处理
+	["u-line-progress", 2], // 待处理
+	["u-image", 2], // 待处理
+	["u-upload", 2], // 待处理
+	["u-overlay", 2], // 待处理
+	["u-toast", 1], // 待处理
+	["u-calendar", 1], // 待处理
+	["u-datetime-picker", 1], // 待处理
+]
+[
+	"01-Color 色彩",
+	"02-Button 按钮",
+	"03-Text文本",
+	"04-布局栅格化",
+	"05-Badge 徽标数和 Tag 标签",
+	"06-Cell 单元格和 Form 表单",
+	"07-Calendar 日历",
+	"08-Picker 选择器",
+	"09-Search 搜索和NumberBox 步进器",
+	"10-Upload 上传和Code 验证码输入框",
+	"11-输入框 Input",
+	"12-Checkbox 复选框和Radio 单选框",
+	"13-ActionSheet 操作菜单",
+	"14-Toast 消息提示和NoticeBar 滚动通知",
+	"15-Notify 消息提示",
+	"16-Modal 模态框",
+	"17-Line 线条和Overlay 遮罩层",
+	"18-Tabbar 底部航档",
+	"19-Navbar 自定义导航栏",
+	"20-Tabs 标签",
+	"21-Subsection 分段器",
+	"22-IndexList 索引列表和ReadMore 展开阅读更多",
+	"23-Gap 间隔槽"
 ]
 export default [
 	{
@@ -33,49 +68,49 @@ export default [
 				icon: "color",
 				title: "Color 色彩",
 				title_en: "Color",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsA/button/button",
 				icon: "button",
 				title: "Button 按钮",
 				title_en: "Button",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsC/text/text",
 				icon: "text",
 				title: "Text 文本",
 				title_en: "Text",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsC/layout/layout",
 				icon: "layout",
 				title: "Layout 布局",
 				title_en: "Layout",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsB/badge/badge",
 				icon: "badge",
 				title: "Badge 徽标数",
 				title_en: "Badge",
-                show: true,
+				show: true,
 			},
 			{
 				path: "/pages/componentsB/tag/tag",
 				icon: "tag",
 				title: "Tag 标签",
 				title_en: "Tag",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsA/cell/cell",
 				icon: "cell",
 				title: "Cell 单元格",
 				title_en: "Cell",
-                show: true,
+				show: true,
 			},
 
 			{
@@ -113,91 +148,91 @@ export default [
 				icon: "form",
 				title: "Form 表单",
 				title_en: "Form",
-                show: true,
+				show: true,
 			},
 			{
 				path: "/pages/componentsC/calendar/calendar",
 				icon: "calendar",
 				title: "Calendar 日历",
 				title_en: "Calendar",
-                show: true,
+				show: true,
 			},
 			{
 				path: "/pages/componentsC/picker/picker",
 				icon: "picker",
 				title: "Picker 选择器",
 				title_en: "Picker",
-                show: true,
+				show: true,
 			},
 			{
 				path: "/pages/componentsC/datetimePicker/datetimePicker",
 				icon: "datetimePicker",
 				title: "DatetimePicker 时间选择器",
 				title_en: "Picker",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsB/switch/switch",
 				icon: "switch",
 				title: "Switch 开关选择器",
 				title_en: "Switch",
-                show: true,
+				show: true,
 			},
 			{
 				path: "/pages/componentsB/slider/slider",
 				icon: "slider",
 				title: "Slider 滑动选择器",
 				title_en: "Slider",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsB/search/search",
 				icon: "search",
 				title: "Search 搜索",
 				title_en: "Search",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsB/numberBox/numberBox",
 				icon: "numberBox",
 				title: "NumberBox 步进器",
 				title_en: "NumberBox",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsB/upload/upload",
 				icon: "upload",
 				title: "Upload 上传",
 				title_en: "Upload",
-                show: true,
+				show: true,
 			},
 			{
 				path: "/pages/componentsB/code/code",
 				icon: "code",
 				title: "Code 验证码倒计时",
 				title_en: "VerificationCode",
-                show: true,
+				show: true,
 			},
 			{
 				path: "/pages/componentsC/input/input",
 				icon: "field",
 				title: "Input 输入框",
 				title_en: "Input",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsA/checkbox/checkbox",
 				icon: "checkbox",
 				title: "Checkbox 复选框",
 				title_en: "Checkbox",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsA/radio/radio",
 				icon: "radio",
 				title: "Radio 单选框",
 				title_en: "Radio",
-                show: true,
+				show: true,
 			},
 
 			{
@@ -212,7 +247,7 @@ export default [
 				title: "Album 相册",
 				title_en: "Album",
 			},
-            {
+			{
 				path: "/pages/componentsB/keyboard/keyboard",
 				icon: "keyboard",
 				title: "Keyboard 键盘",
@@ -271,45 +306,45 @@ export default [
 				icon: "actionSheet",
 				title: "ActionSheet 上拉菜单",
 				title_en: "ActionSheet",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsB/toast/toast",
 				icon: "toast",
 				title: "Toast 消息提示",
 				title_en: "Toast",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsB/alert/alert",
 				icon: "alert",
 				title: "Alert 警告提示",
 				title_en: "Alert",
-                show: true,
+				show: true,
 			},
 			{
 				path: "/pages/componentsB/noticeBar/noticeBar",
 				icon: "noticeBar",
 				title: "NoticeBar 滚动通知",
 				title_en: "NoticeBar",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsB/notify/notify",
 				icon: "notify",
 				title: "Notify 消息提示",
 				title_en: "Notify",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsC/modal/modal",
 				icon: "modal",
 				title: "Modal 模态框",
 				title_en: "Modal",
-                show: true,
+				show: true,
 			},
 
-            {
+			{
 				path: "/pages/componentsC/tooltip/tooltip",
 				icon: "tooltip",
 				title: "Tooltip 长按提示",
@@ -346,19 +381,19 @@ export default [
 		groupName: "布局组件",
 		groupName_en: "Layout components",
 		list: [
-            {
+			{
 				path: "/pages/componentsA/line/line",
 				icon: "line",
 				title: "Line 线条",
 				title_en: "Line",
-                show: true,
+				show: true,
 			},
 			{
 				path: "/pages/componentsA/overlay/overlay",
 				icon: "mask",
 				title: "Overlay 遮罩层",
 				title_en: "Overlay",
-                show: true,
+				show: true,
 			},
 
 			{
@@ -412,40 +447,40 @@ export default [
 		groupName: "导航组件",
 		groupName_en: "Navigation components",
 		list: [
-            {
+			{
 				path: "/pages/componentsB/tabbar/tabbar",
 				icon: "tabbar",
 				title: "Tabbar 底部导航栏",
 				title_en: "Tabbar",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsC/navbar/navbar",
 				icon: "navbar",
 				title: "Navbar 导航栏",
 				title_en: "Navbar",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsC/tabs/tabs",
 				icon: "tabs",
 				title: "Tabs 标签",
 				title_en: "Tabs",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsC/subsection/subsection",
 				icon: "subsection",
 				title: "Subsection 分段器",
 				title_en: "Subsection",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsC/indexList/indexList",
 				icon: "indexList",
 				title: "IndexList 索引列表",
 				title_en: "IndexList",
-                show: true,
+				show: true,
 			},
 
 			// {
@@ -491,19 +526,19 @@ export default [
 		groupName: "其他组件",
 		groupName_en: "Other components",
 		list: [
-            {
+			{
 				path: "/pages/componentsC/readMore/readMore",
 				icon: "readMore",
 				title: "ReadMore 展开阅读更多",
 				title_en: "ReadMore",
-                show: true,
+				show: true,
 			},
-            {
+			{
 				path: "/pages/componentsA/gap/gap",
 				icon: "gap",
 				title: "Gap 间隔槽",
 				title_en: "Gap",
-                show: true,
+				show: true,
 			},
 
 			{
