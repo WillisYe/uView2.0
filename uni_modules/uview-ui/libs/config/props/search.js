@@ -10,7 +10,7 @@
 export default {
     // search
     search: {
-        shape: 'round',
+        shape: 'square',
         bgColor: '#f2f2f2',
         placeholder: '请输入关键字',
         clearabled: true,

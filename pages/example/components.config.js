@@ -5,18 +5,18 @@
 	["u-button", 38], // 已处理
 	["u-action-sheet", 35], // 已处理
 	["u-modal", 30], // 已处理
-	["u-tabs", 27], // 待处理
-	["u-loading-icon", 26], // 待处理
-	["u-search", 21], // 待处理
+	["u-tabs", 27], // 已处理
+	["u-loading-icon", 26], // 蓝湖上没有，跳过
+	["u-search", 21], // 已处理
 	["u-form-item", 18], // 待处理
-	["u-checkbox-group", 16], // 待处理
-	["u-col", 16], // 待处理
-	["u-radio-group", 14], // 待处理
-	["u-radio", 14], // 待处理
-	["u-checkbox", 13], // 待处理
+	["u-checkbox-group", 16], // 已处理
+	["u-col", 16], // 已处理
+	["u-radio-group", 14], // 已处理
+	["u-radio", 14], // 已处理
+	["u-checkbox", 13], // 已处理
 	["u-empty", 10], // 待处理
-	["u-alert", 10], // 待处理
-	["u-badge", 10], // 待处理
+	["u-alert", 10], // 蓝湖上没有，跳过
+	["u-badge", 10], // 已处理
 	["u-tag", 9], // 待处理
 	["u-row", 8], // 待处理
 	["u-switch", 8], // 待处理
@@ -321,7 +321,7 @@ export default [
 				icon: "alert",
 				title: "Alert 警告提示",
 				title_en: "Alert",
-				show: true,
+				show: false,
 			},
 			{
 				path: "/pages/componentsB/noticeBar/noticeBar",
